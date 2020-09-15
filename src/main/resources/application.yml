@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    # 사용할 데이터베이스 정보 입력
+    url: jdbc:tibero:thin:@192.168.0.211:18229:tibero #주소 값
+    username: aixac                                   # ID
+    password: aixac                                   # PW
+    driver-class-name: com.tmax.tibero.jdbc.TbDriver  # Driver
+
+  jpa:
+    hibernate:
+      # ddl-auto 값 설정 ( default : none / create, create-drop, update, none, validate )
+      ddl-auto: none
+#      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true  # 쿼리문이 나가는것을 보여주는 명령어
+        default_batch_fetch_size: 10 # 쿼리문을 n개 만큼 모아서 한꺼번에 날려주는 명령어
+
+    open-in-view: false
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: "keystore.p12"
+    key-store-type: PKCS12 #"JKS" 또는 "PKCS12" 지정
+    key-store-password: password
+    key-alias: examkeystore
+
+#  mvc:
+#    view:
+#      prefix: /jsp/
+#      suffix: .jsp
+#    static-path-pattern: /**
+logging:
+  level:
+    com.example.demo: DEBUG
